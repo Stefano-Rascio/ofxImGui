@@ -61,10 +61,6 @@ namespace ofxImGui
 		{
 			setTheme(theme_);
 		}
-		else
-		{
-			setTheme(new BaseTheme());
-		}
 	}
 
 	//--------------------------------------------------------------
