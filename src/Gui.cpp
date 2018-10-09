@@ -36,6 +36,13 @@ namespace ofxImGui
 		io.DisplaySize = ImVec2((float)ofGetWidth(), (float)ofGetHeight());
 		io.MouseDrawCursor = false;
 
+		io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+		io.ConfigFlags |= ImGuiConfigFlags_NavNoCaptureKeyboard;
+		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+		// io.ConfigResizeWindowsFromEdges = true;
+
+		// io.BackendFlags |= ImGuiBackendFlags_HasMouseCursors;
+
 		if (engine)
 			delete engine;
 
