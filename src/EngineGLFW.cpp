@@ -51,8 +51,9 @@ namespace ofxImGui
 			}
 		}
 
-		io.SetClipboardTextFn = &BaseEngine::setClipboardString;
-		io.GetClipboardTextFn = &BaseEngine::getClipboardString;
+		// Leave ImGui clipboard functions in place - they work!
+		//io.SetClipboardTextFn = &BaseEngine::setClipboardString;
+		//io.GetClipboardTextFn = &BaseEngine::getClipboardString;
 
 		createDeviceObjects();
 
