@@ -1,6 +1,8 @@
 # ofxImGui
 
 ofxAddon that allows you to use [ImGui](https://github.com/ocornut/imgui) in [openFrameworks](https://github.com/openframeworks/openFrameworks).
+This Repo has been forked from https://github.com/s-ol/ofxImGui in order to get the docking feature with the last version of ImGui in openFrameworks
+Repo address: https://github.com/Stefano-Rascio/ofxImGui.git
 
 ### Compatibility
 Master branch may not be tested on all platforms. See [Releases](https://github.com/jvcleave/ofxImGui/releases/) for more extensively tested versions.

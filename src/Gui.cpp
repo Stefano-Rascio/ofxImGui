@@ -36,11 +36,20 @@ namespace ofxImGui
 		io.DisplaySize = ImVec2((float)ofGetWidth(), (float)ofGetHeight());
 		io.MouseDrawCursor = false;
 
+		io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+		io.ConfigFlags |= ImGuiConfigFlags_NavNoCaptureKeyboard;
+		// io.ConfigResizeWindowsFromEdges = true;
+
+		// io.BackendFlags |= ImGuiBackendFlags_HasMouseCursors;
+
+		if (engine)
+			delete engine;
+
 #if defined(TARGET_OPENGLES)
 		engine = new EngineOpenGLES();
 #elif defined (OF_TARGET_API_VULKAN) 
 		engine = new EngineVk();
-#else 
+#else
 		engine = new EngineGLFW();
 #endif
 
@@ -50,10 +59,6 @@ namespace ofxImGui
 		if (theme_)
 		{
 			setTheme(theme_);
-		}
-		else
-		{
-			setTheme(new BaseTheme());
 		}
 	}
 

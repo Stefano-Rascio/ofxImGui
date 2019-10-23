@@ -1,5 +1,7 @@
 #include "Helpers.h"
 
+#include "glm/gtc/type_ptr.hpp"
+
 //--------------------------------------------------------------
 ofxImGui::Settings::Settings()
 	: windowPos(kImGuiMargin, kImGuiMargin)
@@ -72,8 +74,8 @@ bool ofxImGui::BeginWindow(const std::string& name, Settings& settings, bool col
 	// Push a new list of names onto the stack.
 	windowOpen.usedNames.push(std::vector<std::string>());
 
-	ImGui::SetNextWindowPos(settings.windowPos, settings.lockPosition? ImGuiCond_Always : ImGuiCond_Appearing);
-	ImGui::SetNextWindowSize(settings.windowSize, ImGuiCond_Appearing);
+	ImGui::SetNextWindowPos(ImVec2(settings.windowPos.x, settings.windowPos.y), settings.lockPosition? ImGuiCond_Always : ImGuiCond_Appearing);
+	ImGui::SetNextWindowSize(ImVec2(settings.windowSize.x, settings.windowSize.y), ImGuiCond_Appearing);
 	ImGui::SetNextWindowCollapsed(collapse, ImGuiCond_Appearing);
 	return ImGui::Begin(name.c_str(), open, ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_AlwaysAutoResize | (collapse ? 0 : ImGuiWindowFlags_NoCollapse));
 }
@@ -92,8 +94,8 @@ bool ofxImGui::BeginWindow(const std::string& name, Settings& settings, ImGuiWin
 	// Push a new list of names onto the stack.
 	windowOpen.usedNames.push(std::vector<std::string>());
 
-	ImGui::SetNextWindowPos(settings.windowPos, settings.lockPosition? ImGuiCond_Always : ImGuiCond_Appearing);
-	ImGui::SetNextWindowSize(settings.windowSize, ImGuiCond_Appearing);
+	ImGui::SetNextWindowPos(ImVec2(settings.windowPos.x, settings.windowPos.y), settings.lockPosition? ImGuiCond_Always : ImGuiCond_Appearing);
+	ImGui::SetNextWindowSize(ImVec2(settings.windowSize.x, settings.windowSize.y), ImGuiCond_Appearing);
 	ImGui::SetNextWindowCollapsed(!(flags & ImGuiWindowFlags_NoCollapse), ImGuiCond_Appearing);
 	return ImGui::Begin(name.c_str(), open, flags);
 }
@@ -109,8 +111,8 @@ void ofxImGui::EndWindow(Settings& settings)
 
 	settings.windowBlock = false;
 
-	settings.windowPos = ImGui::GetWindowPos();
-	settings.windowSize = ImGui::GetWindowSize();
+	settings.windowPos = {ImGui::GetWindowPos().x, ImGui::GetWindowPos().y};
+	settings.windowSize = {ImGui::GetWindowSize().x, ImGui::GetWindowSize().y};
 	settings.mouseOverGui |= ImGui::IsWindowHovered(ImGuiHoveredFlags_AnyWindow);
 	ImGui::End();
 
@@ -142,7 +144,7 @@ bool ofxImGui::BeginTree(ofAbstractParameter& parameter, Settings& settings)
 bool ofxImGui::BeginTree(const std::string& name, Settings& settings)
 {
 	bool result;
-	ImGui::SetNextTreeNodeOpen(true, ImGuiSetCond_Appearing);
+	ImGui::SetNextTreeNodeOpen(true, ImGuiCond_Appearing);
 	if (settings.treeLevel == 0)
 	{
 		result = ImGui::TreeNodeEx(GetUniqueName(name), ImGuiTreeNodeFlags_Framed | ImGuiTreeNodeFlags_NoAutoOpenOnLog);
@@ -751,5 +753,5 @@ void ofxImGui::AddImage(ofBaseHasTexture& hasTexture, const ofVec2f& size)
 void ofxImGui::AddImage(ofTexture& texture, const ofVec2f& size)
 {
 	ImTextureID textureID = (ImTextureID)(uintptr_t)texture.texData.textureID;
-	ImGui::Image(textureID, size);
+	ImGui::Image(textureID, ImVec2(size.x ,size.y));
 }
