@@ -49,7 +49,7 @@ namespace ofxImGui
 		style->Colors[ImGuiCol_Text] = ImVec4(col_main_text.r, col_main_text.g, col_main_text.b, 1.00f);
 		style->Colors[ImGuiCol_TextDisabled] = ImVec4(col_main_text.r, col_main_text.g, col_main_text.b, 0.58f);
 		style->Colors[ImGuiCol_WindowBg] = ImVec4(col_win_backg.r, col_win_backg.g, col_win_backg.b, 0.70f);
-		style->Colors[ImGuiCol_ChildWindowBg] = ImVec4(col_main_area.r, col_main_area.g, col_main_area.b, 0.58f);
+		style->Colors[ImGuiCol_ChildBg] = ImVec4(col_main_area.r, col_main_area.g, col_main_area.b, 0.58f);
 		style->Colors[ImGuiCol_Border] = ImVec4(col_win_backg.r, col_win_backg.g, col_win_backg.b, 0.00f);
 		style->Colors[ImGuiCol_BorderShadow] = ImVec4(col_win_backg.r, col_win_backg.g, col_win_backg.b, 0.00f);
 		style->Colors[ImGuiCol_FrameBg] = ImVec4(col_main_area.r, col_main_area.g, col_main_area.b, 1.00f);
